@@ -27,5 +27,7 @@ public class UserController {
 		ResponseEntity<String> response = new ResponseEntity<String>(status, HttpStatus.OK);
 		return response;
 	}
+	
+	//@PostMapping()
 
 }
