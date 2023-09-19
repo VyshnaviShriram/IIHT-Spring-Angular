@@ -1,0 +1,60 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form *ngIf="!isLoggedIn" class="login100-form validate-form p-l-55 p-r-55 p-t-178" #loginForm="ngForm"
+                (ngSubmit)="validate(loginForm)" novalidate>
+                <span class="login100-form-title">
+                    Sign In
+                </span>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter username">
+                    <input class="input100" type="text" id="emailId" name="emailId" ngModel required
+                        placeholder="Email Id" #emailId="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
+                    <div class="alert alert-danger m-t-7" role="alert" *ngIf="emailId.errors && emailId.value == null && loginForm.touched">
+                        Username is required!
+                    </div>
+                    <div class="alert-danger m-t-7" *ngIf="emailId.errors">
+                        <div class="alert alert-danger" *ngIf="emailId.errors?.['pattern']">
+                            Invalid Username
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter password">
+                    <input class="input100" type="password" id="password" name="password" ngModel placeholder="Password"
+                        required #password="ngModel" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$">
+                    <div class="alert alert-danger m-t-7" role="alert" *ngIf="password.errors && password.touched">
+                        <div *ngIf="password.errors">Password is required</div>
+                    </div>
+                </div>
+                <div class="alert-danger m-t-7" *ngIf="password.errors">
+                    <div class="alert alert-danger" *ngIf="password.errors?.['pattern']">
+                        Password should have atleast one uppercase, lowercase, special character, number.
+                    </div>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" [disabled]="!loginForm.valid">
+                        Sign in
+                    </button>
+                </div>
+
+                <div class="alert alert-danger" role="alert" *ngIf="loginForm.submitted && isLoginFailed">
+                    Login failed: {{ errorMessage }}
+                </div>
+                <div class="flex-col-c p-t-27 p-b-40">
+                    <span class="txt1 p-b-9">
+                        Don’t have an account?
+                    </span>
+                    <a class="txt3" routerLink="../register">Sign up now
+                    </a>
+                </div>
+            </form>
+            <div class="login100-form validate-form p-l-55 p-r-55 p-t-178" *ngIf="isLoggedIn">
+                <span class="login100-form-title" *ngIf="isLoggedIn">
+                    Sign In
+                </span>
+                <div class="alert alert-success m-b-46" *ngIf="isLoggedIn">
+                    Logged in Successfully.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

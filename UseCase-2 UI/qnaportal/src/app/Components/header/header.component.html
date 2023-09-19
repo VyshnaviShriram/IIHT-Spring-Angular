@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #57b846;">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="" [ngClass]="{active:navSelected == ''}" (click)="navSelected=''">Q&A Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="" [ngClass]="{active:navSelected == ''}" (click)="navSelected=''">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="isLoggedIn()" routerLink="addQuestion" [ngClass]="{active:navSelected == 'addQuestion'}" (click)="navSelected='addQuestion'">Add Question</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="isLoggedIn()" routerLink="getQuestions" [ngClass]="{active:navSelected == 'getQuestions'}" (click)="navSelected='getQuestions'">Get All Questions</a>
+          </li>
+        </ul>
+        <button type="button" *ngIf="!isLoggedIn()" class="btn btn-primary" routerLink="register" style="margin-right: 27px;border-radius: 27px;font-weight: 500;">Sign Up</button>
+        <button type="button" *ngIf="!isLoggedIn()" class="btn btn-primary" routerLink="login" style="border-radius: 27px;font-weight: 500;">Sign In</button>
+        <button type="button" *ngIf="isLoggedIn()" class="btn btn-danger" (click)="logout()" style="border-radius: 27px;font-weight: 500;">Logout</button>
+      </div>
+    </div>
+  </nav>
+  
+  

@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "7c62c934-87af-49d9-b1af-738999170e06",
+		"name": "Q&A Multi-module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"New\",\r\n    \"lastName\":\"user\",\r\n    \"emailId\":\"newuser2@gmail.com\",\r\n    \"password\" : \"Newuser2@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailId\":\"newuser2@gmail.com\",\r\n    \"password\" : \"Newuser2@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Add Question",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE2NzQ4MTMxOTcsImlhdCI6MTY3NDc5NTE5NywianRpIjoiOSJ9.S3CJazMUIU9Iq9kuEhgWRvwsAjZZ5CHgURFwaPxLFF_xFhX5CwkMsCdDBcffkfXt42NBQUKKz6FWXqHhGDzOkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"New Newuser Question\",\r\n    \"description\":\"What is the purpose of Tomcat?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5001/QnA/addQuestion",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"QnA",
+						"addQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Add Answer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZGF0YUBnbWFpbC5jb20iLCJleHAiOjE2NzQ2NzczOTMsImlhdCI6MTY3NDY1OTM5MywianRpIjoiMSJ9.6XaxWt-qbG7_vWFodOLlw7tx_6L6n7pxqxFGqAiidGTDDRGIfw8Jd6iUFoZUgfMj8i73qrEztCxIkjzxTxmxyQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"questionId\" : 1,\r\n    \"answer\" : \"This is software for people to design new systems\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/QnA/addAnswer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"QnA",
+						"addAnswer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New get AllQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZXd1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE2NzQ4MTc5MDYsImlhdCI6MTY3NDc5OTkwNiwianRpIjoiOSJ9.OLZJ9cF_HmJmf9fuPzFSTR1oaPPCSm_Q4TcEhACAE6jtlpnAElEa4II2io7l8xm_rfup3T3PaaUtETQzmaQGEg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5001/QnA/getAllQuestions",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"QnA",
+						"getAllQuestions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

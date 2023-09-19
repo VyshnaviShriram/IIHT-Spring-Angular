@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "dd8d1709-3878-4677-a543-48b9ac2446c2",
+		"name": "Q&A Portal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"new\",\r\n    \"lastName\":\"User\",\r\n    \"emailId\":\"Newuser2@gmail.com\",\r\n    \"password\" : \"Newuser2@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "52.91.243.79:5000/register",
+					"host": [
+						"52",
+						"91",
+						"243",
+						"79"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailId\":\"newuser2@gmail.com\",\r\n    \"password\" : \"Newuser2@1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "52.91.243.79:5000/login",
+					"host": [
+						"52",
+						"91",
+						"243",
+						"79"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Question",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJOZXd1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE2NzUwNzUzNjYsImlhdCI6MTY3NTA1NzM2Nn0.Zx_x6sRXdW2X4m6Cl1KPi_eqOAxXXOqfP3DAiPqwtdJQuAg84UFWMa1D33PzWxySNodfLLaZtcmshSM_a6Ws9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"NewUser Question\",\r\n    \"description\":\"What is the purpose of this IntelliJ?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "52.91.243.79:5000/addQuestion",
+					"host": [
+						"52",
+						"91",
+						"243",
+						"79"
+					],
+					"port": "5000",
+					"path": [
+						"addQuestion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Answer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJOZXd1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE2NzUwNzUzNjYsImlhdCI6MTY3NTA1NzM2Nn0.Zx_x6sRXdW2X4m6Cl1KPi_eqOAxXXOqfP3DAiPqwtdJQuAg84UFWMa1D33PzWxySNodfLLaZtcmshSM_a6Ws9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"questionId\" : 2,\r\n    \"answer\" : \"For designing softwares\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "52.91.243.79:5000/addAnswer",
+					"host": [
+						"52",
+						"91",
+						"243",
+						"79"
+					],
+					"port": "5000",
+					"path": [
+						"addAnswer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllQuestions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJOZXd1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE2NzUwNzUzNjYsImlhdCI6MTY3NTA1NzM2Nn0.Zx_x6sRXdW2X4m6Cl1KPi_eqOAxXXOqfP3DAiPqwtdJQuAg84UFWMa1D33PzWxySNodfLLaZtcmshSM_a6Ws9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "52.91.243.79:5000/getAllQuestions",
+					"host": [
+						"52",
+						"91",
+						"243",
+						"79"
+					],
+					"port": "5000",
+					"path": [
+						"getAllQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllQuestionsById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTY3NDY1MDMwOCwiaWF0IjoxNjc0NjMyMzA4fQ.FG3yayUQl6ZIGEkfDMnZhvhzuWjEOBzsLQVtOn3v4VzpN57mA5jAyGKS5tB74VNQueBbGaRQkcDZVazGhbHFeQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getAllQuestionsById",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getAllQuestionsById"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

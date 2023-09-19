@@ -1,0 +1,19 @@
+<body style="background-color: black;margin-bottom: 100px;">
+    <figure class="text-center" style="color:white;padding: 40px;border-style: double;border-color: greenyellow;">
+        <blockquote class="blockquote">
+            <p>To-do List</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Add or Remove Todos
+        </figcaption>
+    </figure>
+    <div class="container" style="color: white;">
+        
+
+        <div class="input-group" style="border-style: solid;border-color: greenyellow;border-radius: 10px;">
+            <span class="input-group-text">Enter your todos</span>
+            <input type="text" #todoItem class="form-control" placeholder="Enter your todos">
+        </div>
+        <button  style="margin-left: 46%;margin-top: 30px;" (click)="AddTodo(todoItem.value)" type="button" class="btn btn-outline-success">Add todo</button>
+    </div>
+</body>

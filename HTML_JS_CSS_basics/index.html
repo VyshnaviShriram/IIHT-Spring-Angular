@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JS</title>
+    <style>
+        .fields{margin-top: 5px;}
+        .fields label{margin-left: 5px;}
+        .fields input{margin-left: 20px;margin-top: 2px;}
+        .proceed{margin-bottom: 15px;margin-top: 20px;margin-left:auto}
+    </style>
+</head>
+<body style="background-color: rgb(167, 216, 228);">
+    <h1 style="background-color: rgb(155, 173, 48);color:rgb(126, 70, 118);border-style:double;border-color: rgb(155, 173, 48);text-align: center;">Welcome
+        to JavaScript Training</h1>
+    <script src="index.js"></script>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae totam, nam velit nobis animi aliquid
+            suscipit fuga veniam porro illo hic impedit. Excepturi, sint quae!</p>
+    </div>
+
+    <div style="border-style: groove; border-color: brown;">
+        <h2 style="background-color: rgb(155, 173, 48);color:rgb(126, 70, 118);border-style:double;border-color: rgb(155, 173, 48);text-align: center;">User Registration</h1>
+        <form id="basic">
+            <div class="fields">
+                <label for="fName"> First Name</label><br/>
+                <input type= "text" id="fName" placeholder="Enter your First Name" maxlength="15"><br/>
+            </div>
+            <div class="fields">
+                <label for="lName"> Last Name</label><br/>
+                <input type= "text" id="lName" placeholder="Enter your Last Name" maxlength="15">
+            </div>
+            <div class="fields">
+                <label for="eMail"> E-mail id</label><br/>
+                <input type= "email" id="eMail" placeholder="Enter your Email Id"><br/>
+            </div>
+            <div class="fields">
+                <label for="mobno"> Mobile Number</label><br/>
+                <input type= "tel" id="mobno" placeholder="Enter your Mobile Number" maxlength="10" inputmode="numeric"><br/>
+            </div>
+            <div class="fields">
+                <label for="dob"> Date of Birth</label><br/>
+                <input type= "date" id="dob" placeholder="Enter your Date of Birth"><br/>
+            </div>
+            <div class="fields">
+                <label for="gender"> Gender</label><br/>
+                <input type= "radio" value="Male" id="Male" name="gender"> Male
+                <input type= "radio" value="Female" id="Female" name="gender">Female
+                <input type= "radio" value="Others" id="Others" name="gender"> Others<br/>
+            </div>
+            <div class="fields">
+                <label for="subject"> Choose your Favourite Subject</label><br/>
+                <input type= "checkbox" class="subject" value="Java" id="Java" name="Java"> Java
+                <input type= "checkbox" class="subject" value="Python" id="Python" name="Python">Python
+                <input type= "checkbox" class="subject" value="JavaScript" id="JavaScript" name="JavaScript"> JavaScript<br/>
+            </div>
+
+            <div class="proceed">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

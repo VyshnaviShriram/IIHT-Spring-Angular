@@ -1,0 +1,8 @@
+* {font-weight: bold;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: ivory;
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: black;
+}

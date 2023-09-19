@@ -1,0 +1,21 @@
+<div class="container" style="margin-bottom: 60px;">
+    <form name="addQuestionForm" #questionForm="ngForm" (ngSubmit)="validate(questionForm)">
+        <h2 class="m-t-15" style="text-align: center;margin-bottom: 20px;">Please fill the below details to post your question</h2>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" maxlength="200" id="title" name="title" placeholder="Title of the Question"
+            ngModel required #title="ngModel" (focus)="addedQuestion = false">
+            <label for="title">Title of the Question</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" maxlength="300" id="description" name="description" (focus)="addedQuestion = false"
+                placeholder="Description of the Question" ngModel required #description="ngModel">
+            <label for="description">Description of the Question</label>
+        </div>
+        <div class="container-login100-form-btn"><!-- -->
+            <button class="login100-form-btn" type="submit" [disabled]="!questionForm.valid">
+                Submit
+            </button>
+        </div>
+        <div *ngIf="addedQuestion" class="alert alert-success m-t-7" role="alert">Added Question successfully.</div>
+    </form>
+</div>

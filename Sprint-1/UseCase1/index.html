@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <style>
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            display: block;
+        }
+
+        form h5 {
+            margin-left: 25px;
+            color: #898b97;
+            margin-bottom: 16px;
+        }
+
+        .row {
+            margin-left: 25px;
+            margin-right: 15px;
+            margin-top: 20px;
+            /*width: 100%;*/
+            display: flex;
+            gap: 20px
+        }
+
+        .row div {
+            position: relative;
+            width: 100%;
+            /*display: flex;flex-direction: column;align-items: flex-start;*/
+        }
+
+        input {
+            margin-top: 5px;
+            height: 34px;
+            outline: 0;
+            border: 1px solid #b1b1b1;
+            border-radius: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            transition: all 0.5s;
+        }
+
+        @media (max-width: 750px) {
+            .row {
+                display: block;
+            }
+
+            .row div {
+                margin-top: 10px;
+            }
+
+            .proceedNext {
+                width: 80% !important;
+            }
+        }
+
+        .proceedNext {
+            margin-left: 25px;
+            margin-top: 20px;
+            width: 24%;
+        }
+
+        .proceedNext button {
+            height: 36px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #3e3ef4;
+            color: white;
+            font-size: 12px;
+            font-family: Century Gothic;
+            font-weight: bold;
+        }
+
+        .heading::after {
+            content: "";
+            display: block;
+            width: 19px;
+            border-bottom: 2px solid #3e3ef4;
+        }
+
+        input[type="date"] {
+            display: inherit;
+        }
+    </style>
+</head>
+
+<body style="background-color: #3e3ef4;font-family: Century Gothic;">   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var maxDate = year + '-' + month + '-' + day;
+            $('#dob').attr('max', maxDate);
+            $('#issueDate').attr('max', maxDate);
+            $('#expDate').attr('min', maxDate);
+        });
+        function validate() {
+            var valid = true;
+            $('#regForm input').each(function () {
+                if ($(this).val() == '') {
+                    valid = false;
+                } else {
+                    localStorage.setItem($(this).attr('name'), $(this).val());
+                }
+            });
+            return valid;
+        }
+    </script>
+    <div style="background-color: white;margin-left: 20%;margin-right: 20%;padding-top: 1px;padding-bottom: 10px;">
+        <h4 class="heading" style="margin-left: 25px;">Registration</h4>
+        <form id="regForm" action="ThankYouPage.html" onsubmit="return validate()">
+            <h5>Personal Details</h5>
+            <div class="row">
+                <div>
+                    <label for="fName"> Full Name</label>
+                    <input type="text" id="fName" name="Full Name" placeholder="Enter your Name" maxlength="30"
+                        pattern="[A-Za-z ]*$" required>
+                </div>
+                <div>
+                    <label for="dob"> Date of Birth</label>
+                    <input type="text" id="dob" name="Date of Birth" placeholder="Enter birth date"
+                        onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" required>
+                </div>
+                <div>
+                    <label for="email"> Email ID</label>
+                    <input type="email" id="email" name="Email ID" placeholder="Enter your email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="mobno"> Mobile Number</label>
+                    <input type="text" id="mobno" name="Mobile Number" inputmode="numeric"
+                        placeholder="Enter mobile number" maxlength="10"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+                </div>
+                <div>
+                    <label for="gender"> Gender</label>
+                    <input type="text" id="gender" name="Gender" placeholder="Enter your gender" pattern="[A-Za-z]*$"
+                        required>
+                </div>
+                <div>
+                    <label for="occup"> Occupation</label>
+                    <input type="text" id="occup" name="Occupation" placeholder="Enter occupation" pattern="[A-Za-z ]*$"
+                        required>
+                </div>
+            </div>
+            <h5>Identity Details</h5>
+            <div class="row">
+                <div>
+                    <label for="idType"> ID Type</label>
+                    <input type="text" id="idType" name="ID Type" placeholder="Enter ID type" maxlength="30"
+                        pattern="[A-Za-z ]*$" required>
+                </div>
+                <div>
+                    <label for="idNum"> ID Number</label>
+                    <input type="text" id="idNum" name="ID Number" inputmode="numeric" placeholder="Enter ID number"
+                        pattern="[A-Za-z0-9]*$" required>
+                </div>
+                <div>
+                    <label for="idAuth"> Issue Authority</label>
+                    <input type="text" id="idAuth" name="Issue Authority" placeholder="Enter issue department"
+                        pattern="[A-Za-z ]*$" required>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label for="issueDate"> Issue Date</label>
+                    <input type="dob" id="issueDate" name="Issue Date" placeholder="Enter ID issue date"
+                        onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" required>
+                </div>
+                <div>
+                    <label for="state"> Issue State</label>
+                    <input type="text" id="state" name="Issue State" placeholder="Enter ID issue state"
+                        pattern="[A-Za-z ]*$" required>
+                </div>
+                <div>
+                    <label for="expDate"> Expiry Date</label>
+                    <input type="dob" id="expDate" name="Expiry Date" placeholder="Enter ID expiry date"
+                        onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" required>
+                </div>
+            </div>
+            <div class="proceedNext">
+                <button type="submit" class="proceed">Next →</button>
+            </div>
+        </form>
+    </diV>
+</body>
+
+</html>

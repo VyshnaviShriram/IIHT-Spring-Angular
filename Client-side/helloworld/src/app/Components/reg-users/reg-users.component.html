@@ -1,0 +1,15 @@
+<h1 class="display-2" style="text-align: center;margin-top: 5px;border-color: white;border-style: groove;background-color: rgb(67, 158, 243);color:white;">
+    Registered Users</h1>
+<div class="container">
+<ol class="list-group list-group-numbered" style="padding-left: 100px;padding-right: 100px;padding-top: 50px;">
+    <li *ngFor="let u of users, index as i" class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold"> {{u.firstname}} {{u.lastname}}</div>
+            {{u.email}}
+        </div>
+        <button type="button" class="btn btn-outline-danger" (click)="deleteUser(u,i)">Delete</button>
+    </li>
+</ol>
+
+<button type="button" class="btn btn-outline-info" (click)="sortUsers()" style="margin-left: 85%;margin-top: 10px;">Sort</button>
+</div>

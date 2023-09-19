@@ -1,0 +1,43 @@
+<div class="container m-t-20 m-b-7">
+    <div *ngIf="addedAnswer" class="alert alert-success m-t-7" role="alert">Added Answer successfully.</div>
+    <div *ngIf="questions != null && questions.length == 0" style="text-align: center;font-size: 30px;"><b>No questions are added</b></div>
+    <div class="accordion p-b-40" id="accordionExample">
+        <div class="accordion-item" *ngFor="let question of questions;let i =index">
+            <h2 class="accordion-header" id="headingOne"
+                (click)="newAns.answer = '';showField = false;addedAnswer=false">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    [attr.data-bs-target]=accordTarget+question.questionId aria-expanded="false"
+                    [attr.aria-controls]=accordId+question.questionId>
+                    {{question.description}}
+                </button>
+            </h2>
+            <div [attr.id]=accordId+question.questionId class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample" style="">
+                <div class="accordion-body">
+                    <ul *ngFor="let answer of question.answers; let j=index">
+                        <li>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p><b>Name of the User: </b>{{answer.nameofUser}}</p>
+                                    <p><b>Answer {{j+1}}: </b>{{answer.answer}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <p *ngIf="question.answers.length == 0">No answers available</p>
+                    <div class="m-b-16"><a routerLink="." (click)="showField = true">Add your Answer</a></div>
+                    <div class="addAns" [ngClass]="{'show':showField,'hide':!showField}">
+                        <div class="m-b-16">
+                            <textarea type="textarea" name="newAns.answer" #newAns.answer="ngModel" maxlength="300"
+                                [(ngModel)]="newAns.answer" style="width: 100%;"></textarea>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit"
+                                (click)="addAnswer(question.questionId,question.userId)" [disabled]="newAns.answer==''">submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

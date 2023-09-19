@@ -1,0 +1,5 @@
+<h2>{{employee.name | uppercase}}</h2>
+<h2>{{employee.BaseSalary | currency : "USD"}}</h2>
+<h2>{{employee.JoinedOn | date}}</h2>
+<h2>{{employee.WinningPercentage | percent}}</h2>
+<p>{{employee.About | ellipsis:param}}    <button (click)="param='full'">Showmore</button></p>

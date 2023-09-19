@@ -1,0 +1,44 @@
+{
+  "Users": [
+    {
+      "firstname": "Emily",
+      "lastname": "philips",
+      "age": 22,
+      "id": 1,
+      "email": "ytghb@gybh.sd",
+      "gender": "Female"
+    },
+    {
+      "firstname": "John",
+      "lastname": "philips",
+      "age": 25,
+      "email": "sed@gybh.sd",
+      "id": 2,
+      "gender": "Male"
+    },
+    {
+      "firstname": "Neha",
+      "lastname": "",
+      "age": 35,
+      "email": "neha@gybh.sd",
+      "id": 3,
+      "gender": "Female"
+    },
+    {
+      "firstname": "Vyshnavi",
+      "lastname": "Shriram",
+      "age": 20,
+      "email": "vyshnavi@gmail.com",
+      "gender": "",
+      "id": 4
+    },
+    {
+      "firstname": "manjunath",
+      "lastname": "guptha",
+      "age": 12,
+      "email": "manjunath@gmail.com",
+      "gender": "Male",
+      "id": 5
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+version: "1"
+services:
+  qna-service:
+    image: qnaservice
+    ports:
+      - "5001:5001"
+    networks:
+      - qna-app-mysql
+    depends_on:
+      - mysqldb1
+    container_name: web-qnaservice
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb1:3306/questionnanswer-management
+  user-service:
+    image: userservice
+    hostname: localhost
+    ports:
+      - "5000:5000"
+    networks:
+      - qna-app-mysql
+    depends_on:
+      - mysqldb
+    container_name: web-uservice
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/user-management-service
+  mysqldb1:
+    image: mysql:8
+    container_name: sql-qnaservice
+    networks:
+      - qna-app-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass@word1
+      - MYSQL_DATABASE=questionnanswer-management
+  mysqldb:
+    image: mysql:8
+    container_name: sql-userservice
+    networks:
+      - qna-app-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass@word1
+      - MYSQL_DATABASE=user-management-service  
+
+networks:
+  qna-app-mysql:

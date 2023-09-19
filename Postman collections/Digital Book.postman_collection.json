@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "b3c06e76-fe02-4287-8e88-52c59ef73249",
+		"name": "Digital Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Create Book by Author",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logo\":\"https://th.bing.com/th/id/R.48427b936197b989d670bfa6637875db?rik=1ZniOzODyCpnYQ&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fVpay0Eq.jpg&ehk=dZ2aHXbehfHPtkf7TUIgcXsP5M4wdnDEl8fZp%2fSy73s%3d&risl=&pid=ImgRaw&r=0\",\r\n    \"title\":\"Python Programming\",\r\n    \"author\":\"Peterson\",\r\n    \"publisher\":\"Programmers\", \r\n    \"category\":\"Coding\",\r\n    \"price\":\"550\",\r\n    \"active\":\"Y\",\r\n    \"content\":\"https://books.feedvu.com/fullbook/spider-man-spider-man-pdf-peter-david.html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5001/book/create/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"book",
+								"create",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit a Book by Author",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logo\":\"https://th.bing.com/th/id/R.48427b936197b989d670bfa6637875db?rik=1ZniOzODyCpnYQ&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fVpay0Eq.jpg&ehk=dZ2aHXbehfHPtkf7TUIgcXsP5M4wdnDEl8fZp%2fSy73s%3d&risl=&pid=ImgRaw&r=0\",\r\n    \"title\":\"Spiderman\",\r\n    \"author\":\"Peter David\",\r\n    \"publisher\":\"Marvel Studios\", \r\n    \"category\":\"Comics\",\r\n    \"price\":\"150\",\r\n    \"active\":\"N\",\r\n    \"releaseDate\":\"2022/12-13\",\r\n    \"content\":\"https://books.feedvu.com/fullbook/spider-man-spider-man-pdf-peter-david.html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5001/book/edit/2/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"book",
+								"edit",
+								"2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Book",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5001/book/search?title=Spiderman&author=Peter David&publisher=Marvel Studios&category=Comics&price=150",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"book",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Spiderman"
+								},
+								{
+									"key": "author",
+									"value": "Peter David"
+								},
+								{
+									"key": "publisher",
+									"value": "Marvel Studios"
+								},
+								{
+									"key": "category",
+									"value": "Comics"
+								},
+								{
+									"key": "price",
+									"value": "150"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status of book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5001/book/changeBookStatus/2/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"book",
+								"changeBookStatus",
+								"2",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5001/book/getAllBooks",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"book",
+								"getAllBooks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "SignIn POST Method",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"author1\",\r\n    \"password\":\"author1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/sign-in",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUP POST Method",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"author1\",\r\n    \"password\":\"author1\",\r\n    \"role\":\"Author\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/sign-up",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To subscribe a book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyZWFkZXIiLCJleHAiOjE2NzE4MjkyODIsImlhdCI6MTY3MTgxMTI4Mn0.iP2KbnjeoGL7Y9A-qXQd_nSgtxvNUqVDJAKlCucVuRxumnDQnNjGq3nesm7SS_lhdY1E50rXiEVIXI7FMwcdQw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userid\":2}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/readers/7/subscribingBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"readers",
+								"7",
+								"subscribingBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of books subscribed bu a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyZWFkZXIxIiwiZXhwIjoxNjcxNzQ4NzEzLCJpYXQiOjE2NzE3MzA3MTN9.G-Y1Q7JkMmG_kmY8TvFIiF0QSRcIzmzpsXGBJ2Sn-aQZqzf-lmEQlxLicU01lQ49n4mjf0TUTFK0qey5I_Vr5w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/readers/3/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"readers",
+								"3",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book subscribed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/readers/1/books/6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"readers",
+								"1",
+								"books",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Content of book subscribed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/readers/1/books/5/read",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"readers",
+								"1",
+								"books",
+								"5",
+								"read"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/readers/1/books/5/read/cancel-subscription",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"readers",
+								"1",
+								"books",
+								"5",
+								"read",
+								"cancel-subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search a book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/search?title=Spiderman-2&author=Peter David&publisher=Marvel Studios&category=Comics&price=150",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Spiderman-2"
+								},
+								{
+									"key": "author",
+									"value": "Peter David"
+								},
+								{
+									"key": "publisher",
+									"value": "Marvel Studios"
+								},
+								{
+									"key": "category",
+									"value": "Comics"
+								},
+								{
+									"key": "price",
+									"value": "150"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Book by Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdXRob3IxIiwiZXhwIjoxNjcxODg5MjQ0LCJpYXQiOjE2NzE4NzEyNDR9.2LsP6l8bxTUkFmXeiGEqdDDrudEzZVkS1QNrpj6yufYbq7lACsKZ2w7Drym_vZMNCXfKdp9vPSu-Mq7X_Nb8hg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logo\":\"https://th.bing.com/th/id/R.48427b936197b989d670bfa6637875db?rik=1ZniOzODyCpnYQ&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fVpay0Eq.jpg&ehk=dZ2aHXbehfHPtkf7TUIgcXsP5M4wdnDEl8fZp%2fSy73s%3d&risl=&pid=ImgRaw&r=0\",\r\n    \"title\":\"Python Programming\",\r\n    \"author\":\"Thomas\",\r\n    \"publisher\":\"Programmers\", \r\n    \"category\":\"Coding\",\r\n    \"price\":\"389\",\r\n    \"active\":\"N\",\r\n    \"content\":\"https://books.feedvu.com/fullbook/spider-man-spider-man-pdf-peter-david.html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/author/2/books",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"author",
+								"2",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit a Book by Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdXRob3IxIiwiZXhwIjoxNjcxODg5MjQ0LCJpYXQiOjE2NzE4NzEyNDR9.2LsP6l8bxTUkFmXeiGEqdDDrudEzZVkS1QNrpj6yufYbq7lACsKZ2w7Drym_vZMNCXfKdp9vPSu-Mq7X_Nb8hg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"logo\":\"https://th.bing.com/th/id/R.48427b936197b989d670bfa6637875db?rik=1ZniOzODyCpnYQ&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fVpay0Eq.jpg&ehk=dZ2aHXbehfHPtkf7TUIgcXsP5M4wdnDEl8fZp%2fSy73s%3d&risl=&pid=ImgRaw&r=0\",\r\n    \"title\":\"Spiderman\",\r\n    \"author\":\"Peter David\",\r\n    \"publisher\":\"Marvel Studios\", \r\n    \"category\":\"Comics\",\r\n    \"price\":\"150\",\r\n    \"active\":\"N\",\r\n    \"releaseDate\":\"2022-12-13\",\r\n    \"content\":\"https://books.feedvu.com/fullbook/spider-man-spider-man-pdf-peter-david.html\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/author/2/books/6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"author",
+								"2",
+								"books",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Status of book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/author/2/books/2/changeStatus",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"author",
+								"2",
+								"books",
+								"2",
+								"changeStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all author books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhdXRob3IxIiwiZXhwIjoxNjcyMDY2ODU0LCJpYXQiOjE2NzIwNDg4NTR9.bcpgWuyUpcndeGWyl-irln9dfHLQy4FnN800s-cZrjkn6NbQpOSfyVIXmr-aiNIMapOkKRUFYTrRpOTTM5CBwA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/author/3/getbooks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"author",
+								"3",
+								"getbooks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

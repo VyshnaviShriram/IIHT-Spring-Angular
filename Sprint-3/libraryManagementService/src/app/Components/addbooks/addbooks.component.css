@@ -1,0 +1,7 @@
+.proceed{
+    padding-top: 25px;padding-bottom: 15px;
+}
+.form-floating>label{padding: 1.1rem 1rem;}
+.proceed .btn[disabled]{cursor: not-allowed;} 
+.proceed .btn{ border-radius: 22px;background-color: #b21117;border-color: #b21117;width: 95px;}
+.form-check.form-check-inline{margin-left: 9px;}

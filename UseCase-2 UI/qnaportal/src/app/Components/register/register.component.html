@@ -1,0 +1,106 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form *ngIf="!isSignUpSuccess" class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+                #signupForm="ngForm" (ngSubmit)="validate(signupForm)" novalidate>
+                <span class="login100-form-title">
+                    Sign Up
+                </span>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter first name of the user">
+                    <input class="input100" type="text" id="firstName" name="firstName" ngModel required
+                        placeholder="First Name of the User" #firstName="ngModel" minlength="3"
+                        maxlength="100" pattern="^[a-zA-Z]+$">
+                    <div class="alert-danger m-t-7" *ngIf="firstName.errors">
+                        <div class="alert alert-danger" *ngIf="firstName.touched && firstName.value == null && firstName.errors">First Name
+                            is required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="firstName.errors?.['minlength']">
+                            First Name must be at least 3 characters
+                        </div>
+                        <div class="alert alert-danger" *ngIf="firstName.errors?.['maxlength']">
+                            First Name must be at most 20 characters
+                        </div>
+                        <div class="alert alert-danger" *ngIf="firstName.errors?.['pattern']">
+                            First Name should have only alphabets
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter last name of the user">
+                    <input class="input100" type="text" id="lastName" name="lastName" ngModel required
+                        placeholder="Last Name of the User" #lastName="ngModel" minlength="3"
+                        maxlength="100" pattern="^[a-zA-Z]+$">
+                    <div class="alert-danger m-t-7" *ngIf="lastName.errors">
+                        <div class="alert alert-danger" *ngIf="lastName.touched && lastName.value == null && lastName.errors">Last Name
+                            is required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lastName.errors?.['minlength']">
+                            Last Name must be at least 3 characters
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lastName.errors?.['maxlength']">
+                            Last Name must be at most 20 characters
+                        </div>
+                        <div class="alert alert-danger" *ngIf="lastName.errors?.['pattern']">
+                            Last Name should have only alphabets
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter email of the user">
+                    <input class="input100" type="email" id="emailId" name="emailId" ngModel required  maxlength="100"
+                        placeholder="Email of the User" #emailId="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
+                    <div class="alert-danger m-t-7" *ngIf="emailId.errors">
+                        <div class="alert alert-danger" *ngIf="emailId.touched && emailId.value == null && emailId.errors">
+                            Email is required
+                        </div>
+                        <div class="alert alert-danger" *ngIf="emailId.errors?.['pattern']">
+                            Invalid Emaill
+                        </div>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter password">
+                    <input class="input100" type="password" id="password" name="password" #password="ngModel"
+                        minlength="10"  maxlength="20" ngModel placeholder="Password"
+                        required pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$">
+                </div>
+                <!-- pattern="^(?=.{10,})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$" -->
+                <div class="alert-danger m-t-7" *ngIf="password.errors">
+                    <div class="alert alert-danger"
+                        *ngIf="password.touched && password.value == null && password.errors">Password is required
+                    </div>
+                    <div class="alert alert-danger" *ngIf="password.errors?.['minlength']">
+                        Password must be at least 10 characters
+                    </div>
+                    <div class="alert alert-danger" *ngIf="password.errors?.['maxlength']">
+                        Password must be at most 20 characters
+                    </div>
+                    <div class="alert alert-danger" *ngIf="password.errors?.['pattern']">
+                        Password should have atleast one uppercase, lowercase, special character, number.
+                    </div>
+                </div>
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit" [disabled]="!signupForm.valid">
+                        Sign Up
+                    </button>
+                    <div class="alert alert-danger" role="alert" *ngIf="signupForm.submitted && isSignUpFailed">
+                        signup failed: {{ errorMessage }}
+                    </div>
+                </div>
+                <div class="flex-col-c p-t-27 p-b-40">
+                    <span class="txt1 p-b-9">
+                        Already have an account?
+                    </span>
+                    <a class="txt3" routerLink="../login">Sign in now
+                    </a>
+                </div>
+            </form>
+
+            <div class="login100-form validate-form p-l-55 p-r-55 p-t-178" *ngIf="isSignUpSuccess">
+                <span class="login100-form-title" *ngIf="isSignUpSuccess">
+                    Sign Up
+                </span>
+                <div class="alert alert-success m-b-46" *ngIf="isSignUpSuccess">
+                    Your registration is successful!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container" style="width: 68%;">
+    <h1 class="display-2" style="text-align: center;">Please fill the form to add a new book</h1>
+    <form class="row g-3 needs-validation" name="addBookForm" #loginForm="ngForm" (ngSubmit)="validate(loginForm)" novalidate>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="bookname" name="bookname" placeholder="name@example.com"
+                required [(ngModel)]="book.bookname" ngModel>
+            <label for="bookname">Title of Book</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="bookauthor" name="bookauthor" placeholder="Author Name" required
+                [(ngModel)]="book.bookauthor" pattern="[A-Za-z ]*$">
+            <label for="bookauthor">Name of the Author</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="bookgenre" name="bookgenre" placeholder="name@example.com"
+                required [(ngModel)]="book.bookgenre">
+            <label for="bookgenre">Genre of Book</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="bookprice" name="bookprice" placeholder="Author Name" required
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57" [(ngModel)]="book.bookprice">
+            <label for="bookprice">Price of the Book</label>
+        </div>
+        <div class="row">
+            <div class="mb-2 ">Availablility of book for borrowing</div>
+            <div class="col-md-1 form-check  form-check-inline">
+                <input class="form-check-input" type="radio" name="borrowedstatus" id="flexRadioDefault1" value="false"
+                    [(ngModel)]="book.borrowedstatus" required>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Available
+                </label>
+            </div>
+            <div class="col-md-2 form-check  form-check-inline">
+                <input class="form-check-input" type="radio" name="borrowedstatus" id="flexRadioDefault2" value="true"
+                    [(ngModel)]="book.borrowedstatus" required>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Not Available
+                </label>
+            </div>
+        </div>
+        <div class="proceed" style="text-align: center;">
+            <button class="btn btn-primary" type="submit" [disabled]="!checkAllFields(loginForm)">Submit</button>
+        </div>
+    </form>
+</div>

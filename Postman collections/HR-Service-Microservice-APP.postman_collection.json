@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "055d1430-d9c5-4783-8010-ab52f928374e",
+		"name": "HR-Service-Microservice-APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get HR details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/hr/1002",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"hr",
+						"1002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Resource details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/resource/hr/1001",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"resource",
+						"hr",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,9 @@
+<div class="container" style="background-color: black;">
+<ol class="list-group list-group-numbered" style="background-color: black;border-style: solid;border-color: greenyellow;border-radius: 2px;">
+    <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let todo of todos;let i = index">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                {{todo.title}}</div>
+          </div>
+          <button type="button" class="btn btn-outline-danger" (click)="removeTodo(i)">Delete</button></li>
+  </ol></div>

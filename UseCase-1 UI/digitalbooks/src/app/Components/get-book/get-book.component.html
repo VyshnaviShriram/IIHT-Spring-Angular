@@ -1,0 +1,57 @@
+<div class="container m-t-25">
+
+  <ol class="list-group list-group-numbered" style="width: 85%;">
+    <h1 style="text-align: center;">List of Books subscribed</h1>
+    <li *ngFor="let book of books;let i = index"
+      class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class=""><b>{{book.title | uppercase}}</b> <small> by </small><b>{{book.author | titlecase}}</b></div>
+        Price: {{book.price | currency:'INR'}}
+        <div *ngIf="book.active == 'No'" class="warning" role="alert">This book is not available as it has been blocked
+          by the Author</div>
+      </div>
+      <button [disabled]="book.active == 'No'" class="btn btn-outline-success" type="submit"
+        (click)="viewInvoice(book.subscriptionDt,book.subscriptionId)">
+        view invoice
+      </button>
+      <button [disabled]="book.active == 'No'" class="btn btn-outline-success" type="submit"
+        (click)="viewContentofBook(book.content)">
+        view content
+      </button>
+      <button [disabled]="book.active == 'No'" class="btn btn-outline-success" type="submit" *ngIf="book.canunsubscribe"
+        (click)="unSubscribe(dataService.getUserid(),book.subscriptionId,i)">
+        unsubscribe
+      </button>
+    </li>
+    <div *ngIf="books && books.length == 0" class="alert alert-danger" role="alert">No Books Found</div>
+  </ol>
+
+</div>
+<div class="modal" id="Mymodal" [ngClass]="{open:popupOpen == true}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" style="margin-bottom: 0px;">Subscription Details</h3>
+        <button type="button" class="close" data-dismiss="modal" (click)="closePopup()">×</button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">S. No</th>
+              <th scope="col">Subscription ID</th>
+              <th scope="col">Subscription Date</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr>
+              <th scope="row">1</th>
+              <td>{{subscribId}}</td>
+              <td>{{subscribDt}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

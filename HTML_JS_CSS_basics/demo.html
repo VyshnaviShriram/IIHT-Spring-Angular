@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>.fields{text-align: center;margin-top: 5px;}
+        .fields label{margin-left: 5px;}
+        .fields input{margin-top: 2px;}</style>
+</head>
+
+<body>
+    <h1 style="background-color: red;color:white;border-color:red;border-style:hidden;text-align:center">Welcome to HTML
+        Demo</h1>
+    <form method="get">
+        <div class="fields">
+            <label for="fName"> First Name:</label>
+            <input type="text" id="fName" placeholder="Enter your First Name" maxlength="15">
+            <label for="lName"> Last Name:</label>
+            <input type="text" id="lName" placeholder="Enter your Last Name" maxlength="15">
+        </div>
+        <div class="fields">
+            <label for="address"> Address:</label>
+            <input type="text" id="address">
+        </div>
+        <div class="fields">
+            <label for="city"> City:</label>
+            <input type="text" id="city" placeholder="Enter your city here">
+            <label for="state"> State:</label>
+            <input type="text" id="state" placeholder="Enter your state here">
+        </div>
+        <div class="fields">
+            <label for="pincode"> Enter your Zip/Postal Code:</label>
+            <input type="text" id="pincode" placeholder="Enter your zip here">
+        </div>
+        <div class="fields">
+            <label for="mobcd">Select your country</label>
+            <select>
+                <option value="India">India</option>
+                <option value="America">America</option>
+                <option value="Paris">Paris</option>
+            </select>
+
+        </div>
+        <div class="fields">
+            <label for="mobcd"> Enter your country code & Phone Number:</label><br/>
+            <input type="text" id="mobcd" placeholder="Country code">
+            <input type="text" id="mobno" placeholder="Phone Number">
+        </div>
+        <div class="fields">
+            <label for="eMail"> Enter Your Email:</label>
+            <input type= "email" id="eMail" placeholder="Enteremail here">
+        </div>
+        <div class="fields">
+            <label for="gender"> Gender</label>
+            <input type= "radio" value="Male" id="Male" name="gender"> Male
+            <input type= "radio" value="Female" id="Female" name="gender">Female
+        </div>
+        <div class="fields">
+            <button type= "submit"> Submit</button>
+            <button type= "reset">Reset</button>
+        </div>
+    </form>
+    <center>
+        <table border="3" class="fields">
+            <tr><th>Item Name</th><th>Expiry Date</th><th>Quantity</th></tr>
+            <tr><td>Paneer</td><td>Jan 2023</td><td>3kg</td></tr>
+            <tr><td>Cheese</td><td>Feb 2023</td><td>1 kg</td></tr>
+            <tr><td>Cake</td><td>Dec 2023</td><td>2 kg</td></tr>
+        </table>
+    </center>
+</body>
+
+</html>

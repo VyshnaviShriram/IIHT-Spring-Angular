@@ -1,0 +1,107 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" name="addBookForm"
+                #addBookForm="ngForm" (ngSubmit)="validate(addBookForm)" novalidate>
+                <span class="login100-form-title">Please fill the below details to add a book
+                </span>
+                
+                <div class="alert alert-success m-b-46" *ngIf="isBookCreated">
+                    Book is added Succesfully.
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter username">
+                    <input type="url" class="input100" id="logo" name="logo" placeholder="URL of Logo of Book" ngModel
+                        #logo="ngModel" required>
+                    <div class="alert alert-danger m-t-7" *ngIf="logo.touched && logo.value == '' && logo.errors">Logo
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter title">
+                    <input type="text" class="input100" id="title" name="title" placeholder="Title of Book" ngModel
+                        #title="ngModel" required>
+                    <div class="alert alert-danger m-t-7" *ngIf="title.touched && title.value == '' && title.errors">
+                        Title
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter category of book">
+                    <input type="text" class="input100" id="category" name="category" placeholder="Category of Book"
+                        ngModel #category="ngModel" required>
+                    <div class="alert alert-danger m-t-7"
+                        *ngIf="category.touched && category.value == '' && category.errors">
+                        Category
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter catauthoregory of book">
+                    <input type="text" class="input100" id="author" name="author" placeholder="Author of Book" ngModel
+                        #author="ngModel" required>
+                    <div class="alert alert-danger m-t-7" *ngIf="author.touched && author.value == '' && author.errors">
+                        Author
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter price of book">
+                    <input type="text" class="input100" id="price" name="price" placeholder="Price of Book" ngModel
+                        #price="ngModel" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <div class="alert alert-danger m-t-7" *ngIf="price.touched && price.value == '' && price.errors">
+                        Price
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter publisher Name">
+                    <input type="text" class="input100" id="publisher" name="publisher" placeholder="Publisher Name"
+                        ngModel #publisher="ngModel" required>
+                    <div class="alert alert-danger m-t-7"
+                        *ngIf="publisher.touched && publisher.value == '' && publisher.errors">Publisher
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter Content of Book">
+                    <input type="text" class="input100" id="content" name="content" placeholder="URL of Content of Book"
+                        #content="ngModel" ngModel required>
+                    <div class="alert alert-danger m-t-7"
+                        *ngIf="content.touched && content.value == '' && content.errors">
+                        content
+                        is required
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-30" data-validate="Please enter Release date">
+                    <input type="text" class="input100" id="releaseDate" name="releaseDate"
+                        placeholder="Date of Release of book" ngModel #releaseDate="ngModel" required #inp
+                        (focus)="inp.type='date'">
+                    <div class="alert alert-danger m-t-7"
+                        *ngIf="releaseDate.touched && releaseDate.value == '' && releaseDate.errors">Release date
+                        is required
+                    </div>
+                </div>
+
+                <div class="p-l-10 m-b-30 txt2">
+                    <div class="m-b-5">Status of book</div>
+                    <div class="form-check form-check-inline">
+                        <input #active="ngModel" class="form-check-input" type="radio" name="active" id="Active"
+                            value="Yes" ngModel required>
+                        <label class="form-check-label" for="Active">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="active" id="Inactive" value="No" required
+                            ngModel #active="ngModel">
+                        <label class="form-check-label" for="Inactive">Inactive</label>
+                    </div>
+                    <div class="alert-danger m-t-7" *ngIf="active.errors">
+                        <div class="alert alert-danger m-t-7"
+                            *ngIf="active.touched && active.value == '' && active.errors">
+                            Role
+                            is required
+                        </div>
+                    </div>
+                </div>
+                <div class="container-login100-form-btn m-b-30">
+                    <button class="login100-form-btn" type="submit" [disabled]="!addBookForm.valid">
+                        Add Book
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

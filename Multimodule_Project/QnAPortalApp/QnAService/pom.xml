@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.qandaportal</groupId>
+    <artifactId>QnAPortalApp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>QnAService</artifactId>
+  <name>QnAService</name>
+  <description>Project for handling QnAService</description>
+  
+  <dependencies>
+  		<!-- <dependency>
+  			<groupId>com.qandaportal</groupId>
+  			<artifactId>AuthService</artifactId>  
+  			<version>0.0.1-SNAPSHOT</version>		
+  		</dependency> -->  		
+  		<dependency>
+  			<groupId>com.qandaportal</groupId>
+  			<artifactId>UserService</artifactId>  
+  			<version>0.0.1-SNAPSHOT</version>		
+  		</dependency>
+  </dependencies>
+  <build>
+		<finalName>qnaservice</finalName>
+	</build>
+</project>
