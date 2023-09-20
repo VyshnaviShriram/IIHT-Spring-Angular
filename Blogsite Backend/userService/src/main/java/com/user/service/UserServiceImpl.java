@@ -1,28 +1,39 @@
 package com.user.service;
 
+import static com.user.entity.User.SEQUENCE_NAME;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.user.entity.User;
-import static com.user.entity.User.*;
-import com.user.repository.IUserRepositiry;
+import com.user.repository.IUsersRepository;
 
 @Service
 public class UserServiceImpl implements IUserService{
 
 	@Autowired
-	private IUserRepositiry userRepo;
+	private IUsersRepository userRepo;
 	
 	@Autowired
 	SequenceGenratorService seqGenService;
+	
+	@Autowired
+	 private PasswordEncoder passwordEncoder;
+	 
+	 public String getEncodedPassword(String password) {
+	        return passwordEncoder.encode(password);
+	    }
 	
 	@Override
 	public Integer createUser(User user) {
 		Integer userId = 0;
 		user.setCreatedDate(new Date());
-		//user.setPassword(getEncodedPassword(user.getPassword()));
+		user.setPassword(getEncodedPassword(user.getPassword()));
 		boolean isExistingId = userRepo.findAll().stream().anyMatch(data->data.getUserEmail().equalsIgnoreCase(user.getUserEmail()));
 		if(!isExistingId) {
 			user.setUserId(seqGenService.getSequenceNumber(SEQUENCE_NAME));

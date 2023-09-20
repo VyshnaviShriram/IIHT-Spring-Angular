@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Document(collection="Users")
 public class User {
@@ -17,6 +18,7 @@ public class User {
 	private String userName;
 	private String userEmail;
 	private String password;
+	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
 	private Date createdDate;
 	
 	public Integer getUserId() {
