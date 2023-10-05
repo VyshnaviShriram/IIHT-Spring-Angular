@@ -18,7 +18,7 @@ public interface IBlogRepository extends MongoRepository<Blog, Integer>{
 	@Query(value="{blogName:?0}",delete=true)
 	List<Blog> deleteByName(String blogName);
 
-	@Query("{category:?0,createdTime:{$gt:?1},createdTime:{$lt:?2}}")
+	@Query("{$and:[{category:?0},{createdTime:{$gt:?1}},{createdTime:{$lt:?2}}]}")
 	List<Blog> findByCategoryAndTimeRange(String category, Date startTime, Date endTime);
 
 	@Query("{blogName:?0}")

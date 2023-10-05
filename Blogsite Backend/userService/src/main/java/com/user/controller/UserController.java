@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -48,7 +49,7 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	public static final String BASE_URL = "http://localhost:9091/";
+	public static final String BASE_URL = "http://localhost:9091/blogs/";
 	
 	@PostMapping("/register")
 	public ResponseEntity<String> registerUser(@RequestBody User user){
@@ -74,22 +75,30 @@ public class UserController {
 			throw new Exception("INVALID_CREDENTIALS", e);
 		}
 		UserDetails userDetails = jwtUserService.loadUserByUsername(userName);
-		String newGeneratedToken = jwtUtility.generateToken(userDetails);
-		User user = userRepo.findByEmailId(userName).get(0);
+		List<User> users= userService.getUsersbyEmailId(userName);
+		User user = null;
+		Integer userId = 0;
+		if(users.size() > 0) {
+			user = users.get(0);
+			userId = user.getUserId();
+		}
+		String newGeneratedToken = jwtUtility.generateToken(userDetails, userId.toString());
+		//User user = userService.getUsersbyEmailId(userName).get(0);
 		JwtResponse jwtResponse = new JwtResponse(user, newGeneratedToken);
-	
 		return jwtResponse;
 	}
 	
 	@PostMapping("/addBlog")
-	public ResponseEntity<String> addBlog(@RequestBody Blog blog) {
+	public ResponseEntity<String> addBlog(@RequestBody Blog blog, @RequestHeader("Authorization") String authHeader) {
+		Integer userId= getUserIdfromHeader(authHeader);
+		blog.setUserId(userId);
 		String message = restTemplate.postForObject(BASE_URL+"/addBlog", blog, String.class);
 		ResponseEntity<String> response = new ResponseEntity<String>(message, HttpStatus.OK);
 		return response;
 	}
 	
 	@GetMapping("/getAllBlogs")
-	public ResponseEntity<List<Blog>> getAllBlogs(@RequestBody Blog blog) {
+	public ResponseEntity<List<Blog>> getAllBlogs() {
 		List<Blog> allBlogs= restTemplate.getForObject(BASE_URL+"/getAllBlogs", List.class);
 		ResponseEntity<List<Blog>> response = new ResponseEntity<List<Blog>>(allBlogs, HttpStatus.OK);
 		return response;
@@ -102,9 +111,9 @@ public class UserController {
 		return response;
 	}
 	
-	@GetMapping("/getBlogsByTime/{category}/{startTime}/{endTime}")
-	public ResponseEntity<List<Blog>> getAllBlogsByCategoryANdTime(@PathVariable String category, @PathVariable String fromTime,@PathVariable String toTime) {
-		List<Blog> allBlogs= restTemplate.getForObject(BASE_URL+"/getBlogsByCategory/"+category+"/"+fromTime+"/"+toTime, List.class);
+	@GetMapping("/getBlogsByTimeAndCategory/{category}/{startTime}/{endTime}")
+	public ResponseEntity<List<Blog>> getAllBlogsByCategoryANdTime(@PathVariable String category, @PathVariable String startTime,@PathVariable String endTime) {
+		List<Blog> allBlogs= restTemplate.getForObject(BASE_URL+"/getBlogsByTime/"+category+"/"+startTime+"/"+endTime, List.class);
 		ResponseEntity<List<Blog>> response = new ResponseEntity<List<Blog>>(allBlogs, HttpStatus.OK);
 		return response;
 	}
@@ -122,6 +131,18 @@ public class UserController {
 		}
 		response = new ResponseEntity<String>(message, HttpStatus.OK);
 		return response;
+	}
+	
+	private Integer getUserIdfromHeader(String authHeader) {
+		String token = null;
+		String userName = null;
+		Integer userId = null;
+		if(null != authHeader && authHeader.startsWith("Bearer ")) {
+			token = authHeader.substring(7);
+			userName = jwtUtility.getUserNameFromToken(token);
+			userId = userService.getUserIdByEmail(userName);
+		}
+		return userId;
 	}
 
 }

@@ -5,6 +5,7 @@ import static com.user.entity.User.SEQUENCE_NAME;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,6 +42,17 @@ public class UserServiceImpl implements IUserService{
 			userId = newUser.getUserId();			
 		}
 		return userId;
+	}
+	
+	@Override
+	public List<User> getUsersbyEmailId(String emailId){
+		return userRepo.findByEmailId(emailId);
+	}
+
+	@Override
+	public Integer getUserIdByEmail(String userName) {
+		List<User> users = userRepo.findByEmailId(userName);
+		return users.get(0).getUserId();
 	}
 
 }

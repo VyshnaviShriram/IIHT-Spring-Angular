@@ -26,6 +26,10 @@ public class JWTUtility implements Serializable{
 		return getClaimsFromToken(token, Claims::getSubject);
 	}
 	
+	public String getUserIdFromToken(String token) {
+		return getClaimsFromToken(token, Claims::getId);
+	}
+	
 	private <T> T getClaimsFromToken(String token, Function<Claims, T> claimsResolver) {
 		final Claims claims = getAllClaimsFromToken(token);
 		return claimsResolver.apply(claims);
@@ -44,15 +48,16 @@ public class JWTUtility implements Serializable{
 		return getClaimsFromToken(token, Claims::getExpiration);
 	}
 	
-	public String generateToken(UserDetails userDetails) {
+	public String generateToken(UserDetails userDetails, String userId) {
 		Map<String,Object> claims = new HashMap();
-		return doGenerateToken(claims, userDetails.getUsername());		
+		return doGenerateToken(claims, userDetails.getUsername(), userId);		
 	}
 
-	private String doGenerateToken(Map<String, Object> claims, String username) {
+	private String doGenerateToken(Map<String, Object> claims, String username, String userId) {
 		return Jwts.builder()
 				.setClaims(claims)
 				.setSubject(username)
+				.setId(userId)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis()+JWT_TOKEN_VALIDITY*1000))
 				.signWith(SignatureAlgorithm.HS512, secretKey)
